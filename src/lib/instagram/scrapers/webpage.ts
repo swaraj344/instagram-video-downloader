@@ -28,7 +28,8 @@ export const formatPageJson = (postHtml: CheerioAPI) => {
     filename: filename,
     width: width ?? "",
     height: height ?? "",
-    videoUrl: videoUrl,
+    url: videoUrl,
+    type: "video"
   };
 
   return videoJson;

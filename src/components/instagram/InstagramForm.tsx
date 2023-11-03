@@ -77,8 +77,8 @@ const downloadPostVideo = async (postUrl: string) => {
     throw new ClientException();
   }
 
-  const { filename, videoUrl } = response.data;
-  await downloadFile(filename, videoUrl);
+  const { filename, url } = response.data;
+  await downloadFile(filename, url);
 };
 
 export default function InstagramForm() {
