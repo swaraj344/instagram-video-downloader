@@ -16,19 +16,24 @@ export const formatGraphqlJson = (postJson: GraphQLResponse) => {
     throw new BadRequest("This post does not exist");
   }
 
-  if (!data.is_video) {
-    throw new BadRequest("This post is not a video");
-  }
+  // if (!data.is_video) {
+  //   throw new BadRequest("This post is not a video");
+  // }
+
+  const isVideo = data.is_video;
 
   const filename = getIGVideoFileName();
   const { width, height } = data.dimensions;
-  const videoUrl = data.video_url;
+
+  const videoUrl = isVideo ? data.video_url : data.display_url;
+
 
   const videoJson: VideoInfo = {
     filename: filename,
     width: width.toString(),
     height: height.toString(),
-    videoUrl: videoUrl,
+    url: videoUrl,
+    type: isVideo ? "video" : "image"
   };
 
   return videoJson;

@@ -13,7 +13,8 @@ export type VideoInfo = {
   filename: string;
   width: string;
   height: string;
-  videoUrl: string;
+  url: string;
+  type: "video" | "image"
 };
 
 export type SuccessResponse<T> = {
